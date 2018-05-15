@@ -1,17 +1,24 @@
-classdef employee
-    %UNTITLED2 Summary of this class goes here
-    %   Detailed explanation goes here
+classdef employee < handle
     
-    properties
+    
+    properties       
        name;
        phone;
        role;
+      
+    end
+    properties(SetAccess=private)
+       id; 
+    end
+    properties(Constant,Hidden)
+       count = thiscount();
     end
     
     methods
         function obj = employee(name, phone, role)
-            %UNTITLED2 Construct an instance of this class
-            %   Detailed explanation goes here
+          
+            obj.count.add;
+            obj.id=obj.count.number;
             obj.name = name;
             obj.phone = phone;
             obj.role = role;

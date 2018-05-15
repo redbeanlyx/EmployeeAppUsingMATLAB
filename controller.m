@@ -13,8 +13,10 @@ classdef controller < handle
             obj.viewObj = viewObj;
             obj.modelObj = modelObj;
         end
-        function callback_createButton(obj,src,event)
-            obj.modelObj.withDraw(obj.viewObj.viewRMB.Value);
+        function callback_submitButton(obj,src,event)
+            capp = obj.viewObj;
+            em = employee(capp.nameEditField.Value,capp.phonenumberEditField.Value,capp.RoleDropDown.Value);
+            obj.modelObj.addEmployee(em);
         end
         
     end
