@@ -16,7 +16,6 @@ classdef employee < handle
     
     methods
         function obj = employee(name, phone, role)
-          
             obj.count.add;
             obj.id=obj.count.number;
             obj.name = name;
