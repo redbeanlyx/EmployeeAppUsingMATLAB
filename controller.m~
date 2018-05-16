@@ -19,8 +19,9 @@ classdef controller < handle
             obj.modelObj.addEmployee(em);
         end
         function callback_updateButton(obj,src,event)
-            obj.viewObj.em.name = obj.viewObj.nameEditField.Value;
-            obj.modelObj.updateEmployeeById();
+            capp = obj.viewObj;
+            em = employee(capp.nameEditField.Value,capp.phonenumberEditField.Value,capp.RoleDropDown.Value);
+            obj.modelObj.addEmployee(em);
         end
         
     end

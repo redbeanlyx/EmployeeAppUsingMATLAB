@@ -3,11 +3,11 @@ classdef updateEmployee < matlab.apps.AppBase
     % Properties that correspond to app components
     properties (Access = public)
         UIFigure                   matlab.ui.Figure
-        submitButton               matlab.ui.control.Button
+        updateButton               matlab.ui.control.Button
         nameLabel                  matlab.ui.control.Label
         nameEditField              matlab.ui.control.EditField
         phonenumberEditFieldLabel  matlab.ui.control.Label
-        phonenumberEditField       matlab.ui.control.NumericEditField
+        phonenumberEditField       matlab.ui.control.EditField
         RoleDropDownLabel          matlab.ui.control.Label
         RoleDropDown               matlab.ui.control.DropDown
         CreateanewEmployeeLabel    matlab.ui.control.Label
@@ -18,13 +18,14 @@ classdef updateEmployee < matlab.apps.AppBase
         controlObj
         modelObj
         id
+        em
     end
     
     methods (Access = private)
      
         function attatchToController(app,controller)
-            funcH = @controller.callback_submitButton;
-	   addlistener(app.submitButton,'ButtonPushed',funcH)
+            funcH = @controller.callback_updateButton;
+	        addlistener(app.updateButton,'ButtonPushed',funcH)
 
         end
     
@@ -37,11 +38,14 @@ classdef updateEmployee < matlab.apps.AppBase
         function startupFcn(app)
            
             app.attatchToController(app.controlObj);
-%             app.nameEditField.Value = 
+            app.em = app.modelObj.searchEmployeeById(app.id);
+            app.nameEditField.Value = app.em.name;
+            app.phonenumberEditField.Value = app.em.phone;
+            app.RoleDropDown.Value = app.em.role;
         end
 
-        % Button pushed function: submitButton
-        function submitButtonPushed(app, event)
+        % Button pushed function: updateButton
+        function updateButtonPushed(app, event)
           
             delete(app);       
         end
@@ -67,11 +71,11 @@ classdef updateEmployee < matlab.apps.AppBase
             app.UIFigure.Name = 'UI Figure';
             app.UIFigure.CloseRequestFcn = createCallbackFcn(app, @UIFigureCloseRequest, true);
 
-            % Create submitButton
-            app.submitButton = uibutton(app.UIFigure, 'push');
-            app.submitButton.ButtonPushedFcn = createCallbackFcn(app, @submitButtonPushed, true);
-            app.submitButton.Position = [420 79 100 22];
-            app.submitButton.Text = 'submit';
+            % Create updateButton
+            app.updateButton = uibutton(app.UIFigure, 'push');
+            app.updateButton.ButtonPushedFcn = createCallbackFcn(app, @updateButtonPushed, true);
+            app.updateButton.Position = [420 79 100 22];
+            app.updateButton.Text = 'update';
 
             % Create nameLabel
             app.nameLabel = uilabel(app.UIFigure);
@@ -90,7 +94,7 @@ classdef updateEmployee < matlab.apps.AppBase
             app.phonenumberEditFieldLabel.Text = 'phone number:';
 
             % Create phonenumberEditField
-            app.phonenumberEditField = uieditfield(app.UIFigure, 'numeric');
+            app.phonenumberEditField = uieditfield(app.UIFigure, 'text');
             app.phonenumberEditField.Position = [269 243 100 22];
 
             % Create RoleDropDownLabel
@@ -110,7 +114,7 @@ classdef updateEmployee < matlab.apps.AppBase
             app.CreateanewEmployeeLabel.FontSize = 20;
             app.CreateanewEmployeeLabel.FontWeight = 'bold';
             app.CreateanewEmployeeLabel.Position = [190 400 231 24];
-            app.CreateanewEmployeeLabel.Text = 'Update a new Employee';
+            app.CreateanewEmployeeLabel.Text = 'Update The Employee';
         end
     end
 

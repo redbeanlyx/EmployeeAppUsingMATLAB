@@ -32,7 +32,7 @@ classdef allEmployee < handle
             rows = ss(1);
             for index = 1:rows
                 if isequal(obj.employees{index,1}.id,id)
-                    disp('test');
+                   
                     em = obj.employees{index,1};
                     return 
                 end
@@ -42,5 +42,11 @@ classdef allEmployee < handle
             %???
              
         end
+        
+        function updateEmployeeById(obj)
+            
+            obj.notify('employeesChanged');
+        end
+        
     end
 end

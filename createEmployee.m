@@ -108,7 +108,7 @@ classdef createEmployee < matlab.apps.AppBase
             app.CreateanewEmployeeLabel.FontSize = 20;
             app.CreateanewEmployeeLabel.FontWeight = 'bold';
             app.CreateanewEmployeeLabel.Position = [190 400 231 24];
-            app.CreateanewEmployeeLabel.Text = 'Create a new Employee';
+            app.CreateanewEmployeeLabel.Text = 'Create A Employee';
         end
     end
 
