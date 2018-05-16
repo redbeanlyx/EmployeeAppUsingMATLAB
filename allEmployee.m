@@ -43,8 +43,10 @@ classdef allEmployee < handle
              
         end
         
-        function updateEmployeeById(obj)
-            
+        function updateEmployeeById(obj,em,name,phone,role)
+            em.name = name;
+            em.phone = phone;
+            em.role = role;
             obj.notify('employeesChanged');
         end
         
