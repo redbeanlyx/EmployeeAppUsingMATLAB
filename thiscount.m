@@ -3,7 +3,7 @@ classdef (Sealed) thiscount < handle
         number = 0
    end
    methods
-       function obj = thiscount(obj)
+       function obj = thiscount()
        end
        
        function obj = add(obj) 

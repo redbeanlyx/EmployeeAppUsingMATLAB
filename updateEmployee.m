@@ -17,6 +17,7 @@ classdef updateEmployee < matlab.apps.AppBase
     properties (Access = public)
         controlObj
         modelObj
+        id
     end
     
     methods (Access = private)
@@ -36,6 +37,7 @@ classdef updateEmployee < matlab.apps.AppBase
         function startupFcn(app)
            
             app.attatchToController(app.controlObj);
+%             app.nameEditField.Value = 
         end
 
         % Button pushed function: submitButton
@@ -115,8 +117,8 @@ classdef updateEmployee < matlab.apps.AppBase
     methods (Access = public)
 
         % Construct app
-        function app = updateEmployee(modelObj)
-
+        function app = updateEmployee(id,modelObj)
+            app.id = id;
             app.modelObj =  modelObj;
             app.controlObj = controller(app,app.modelObj);
             % Create and configure components
