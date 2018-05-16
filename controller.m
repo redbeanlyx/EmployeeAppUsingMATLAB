@@ -22,6 +22,11 @@ classdef controller < handle
             
             obj.modelObj.updateEmployeeById(obj.viewObj.em,obj.viewObj.nameEditField.Value,obj.viewObj.phonenumberEditField.Value,obj.viewObj.RoleDropDown.Value);
         end
+         function callback_deleteButton(obj,src,event)
+            row = obj.viewObj.selectedCell(1);
+            id = obj.viewObj.employeeTbl.Data{row,4};
+            obj.modelObj.deleteEmployee(id);
+        end
         
     end
 end
