@@ -63,22 +63,20 @@ classdef allEmployee < handle
         end
         
         function ems = searchEmployeeByName(obj,name)
-            ems = {};%initialize the size of the array
+            ems = {};
             ss = size(obj.employees);
             rows = ss(1);
-            expression = ['.*',name,'.*'] ;
-%             count = 1;
+            expression = '.*' + name + '.*';
+            
             for index = 1:rows
-                startIndex = regexpi(obj.employees{index,1}.name,expression);
+                startIndex = regexpi(obj.employees{index,1},expression);
                 if isempty(startIndex)==0
                    
-                    ems{end+1,1} = obj.employees{index,1};
-%                     count = count +1;
+                    ems{end+1,1} = 
                      
                 end
                 
             end
-            disp(size(ems));
             
         end
         

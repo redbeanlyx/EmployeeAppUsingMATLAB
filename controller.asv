@@ -22,14 +22,14 @@ classdef controller < handle
             end
             expression = '([^a-z])+';
             if isempty(regexpi(name,expression)) == 0
-                warndlg('name should be characters!','Warning');
-                result = 0;
-                return
+                 warndlg('name should be characters!','Warning');
+                 result = 0;
+                 return
             end
-            if length(name) < 3
-                warndlg('length of name should be at least 3!','Warning');
-                result = 0;
-                return
+                        if isempty(regexpi(name,expression)) == 0
+                 warndlg('name should be characters!','Warning');
+                 result = 0;
+                 return
             end
             expression = '\d{4}';
             startIndex = regexp(phone,expression);
@@ -58,20 +58,10 @@ classdef controller < handle
         
         function callback_updateButton(obj,src,event)
             
-            name = obj.viewObj.nameEditField.Value;
-            phone= obj.viewObj.phonenumberEditField.Value;
-            role= obj.viewObj.RoleDropDown.Value;
-           if isValidate(obj,name,phone) == 0
-                return
-            end 
-            obj.modelObj.updateEmployeeById(obj.viewObj.em,name,phone,role);
+            obj.modelObj.updateEmployeeById(obj.viewObj.em,obj.viewObj.nameEditField.Value,obj.viewObj.phonenumberEditField.Value,obj.viewObj.RoleDropDown.Value);
         end
         
         function callback_deleteButton(obj,src,event)
-             if isempty(obj.viewObj.selectedCell)
-                warndlg('should select a row!');
-                return
-            end
             row = obj.viewObj.selectedCell(1);
             id = obj.viewObj.employeeTbl.Data{row,4};
             obj.modelObj.deleteEmployee(id);

@@ -47,7 +47,7 @@ classdef updateEmployee < matlab.apps.AppBase
         % Button pushed function: updateButton
         function updateButtonPushed(app, event)
           
-            delete(app);       
+                
         end
 
         % Close request function: UIFigure

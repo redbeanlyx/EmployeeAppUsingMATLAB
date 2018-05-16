@@ -7,7 +7,7 @@ classdef createEmployee < matlab.apps.AppBase
         nameLabel                  matlab.ui.control.Label
         nameEditField              matlab.ui.control.EditField
         phonenumberEditFieldLabel  matlab.ui.control.Label
-        phonenumberEditField       matlab.ui.control.NumericEditField
+        phonenumberEditField       matlab.ui.control.EditField
         RoleDropDownLabel          matlab.ui.control.Label
         RoleDropDown               matlab.ui.control.DropDown
         CreateanewEmployeeLabel    matlab.ui.control.Label
@@ -40,8 +40,8 @@ classdef createEmployee < matlab.apps.AppBase
 
         % Button pushed function: submitButton
         function submitButtonPushed(app, event)
-          
-            delete(app);       
+           
+            
         end
 
         % Close request function: UIFigure
@@ -88,7 +88,7 @@ classdef createEmployee < matlab.apps.AppBase
             app.phonenumberEditFieldLabel.Text = 'phone number:';
 
             % Create phonenumberEditField
-            app.phonenumberEditField = uieditfield(app.UIFigure, 'numeric');
+            app.phonenumberEditField = uieditfield(app.UIFigure, 'text');
             app.phonenumberEditField.Position = [269 243 100 22];
 
             % Create RoleDropDownLabel
