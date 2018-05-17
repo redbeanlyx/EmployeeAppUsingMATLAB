@@ -77,6 +77,10 @@ classdef controller < handle
             obj.modelObj.deleteEmployee(id);
         end
         
+%         function callback_sortButton(obj,src,event)
+%             obj.modelObj.sortEmployees();
+%         end
+        
 %          function callback_searchButton(obj,src,event)
 %             row = obj.viewObj.selectedCell(1);
 %             id = obj.viewObj.employeeTbl.Data{row,4};

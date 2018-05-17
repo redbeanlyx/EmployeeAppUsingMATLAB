@@ -96,5 +96,11 @@ classdef allEmployee < handle
             obj.notify('employeesChanged');
         end
         
+%         function sortEmployees(obj)
+%             [~, ix] = sort(obj.employees) ; 
+%             obj.employees(1:end,:) = obj.employees(ix,:) ;     
+%             obj.notify('employeesChanged');
+%         end
+        
     end
 end

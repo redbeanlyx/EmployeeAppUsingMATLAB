@@ -12,6 +12,7 @@ classdef mainEmployee < matlab.apps.AppBase
         Label             matlab.ui.control.Label
         searchEditField   matlab.ui.control.EditField
         searchButton      matlab.ui.control.Button
+        sortbynameButton  matlab.ui.control.Button
     end
 
     
@@ -45,7 +46,10 @@ classdef mainEmployee < matlab.apps.AppBase
         
         function attatchToController(app,controller)
             funcH = @controller.callback_deleteButton;
-	   addlistener(app.deleteButton,'ButtonPushed',funcH)
+        	   addlistener(app.deleteButton,'ButtonPushed',funcH)
+            
+%             funcH = @controller.callback_sortButton;
+%         	   addlistener(app.sortbynameButton,'ButtonPushed',funcH)
 
         end
         
@@ -119,6 +123,12 @@ classdef mainEmployee < matlab.apps.AppBase
         function deleteButtonPushed(app, event)
             
         end
+
+        % Button pushed function: sortbynameButton
+        function sortbynameButtonPushed(app, event)
+            [~, ix] = sort(app.employeeTbl.Data(1:end,1)) ; 
+            app.employeeTbl.Data(1:end,:) = app.employeeTbl.Data(ix,:) ;          
+        end
     end
 
     % App initialization and construction
@@ -184,6 +194,12 @@ classdef mainEmployee < matlab.apps.AppBase
             app.searchButton.ButtonPushedFcn = createCallbackFcn(app, @searchButtonPushed, true);
             app.searchButton.Position = [488 364 55 22];
             app.searchButton.Text = 'search';
+
+            % Create sortbynameButton
+            app.sortbynameButton = uibutton(app.Panel, 'push');
+            app.sortbynameButton.ButtonPushedFcn = createCallbackFcn(app, @sortbynameButtonPushed, true);
+            app.sortbynameButton.Position = [80 364 100 22];
+            app.sortbynameButton.Text = 'sort by name';
         end
     end
 
