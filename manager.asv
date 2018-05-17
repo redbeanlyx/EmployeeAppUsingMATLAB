@@ -1,0 +1,16 @@
+classdef manager < employee
+   
+    
+    properties
+        employees
+    end
+    
+    methods
+        function obj = manager()
+           
+        end
+        
+        function 
+    end
+end
+

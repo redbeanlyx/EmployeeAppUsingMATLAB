@@ -15,10 +15,13 @@ classdef allEmployee < handle
             
             e1 = employee('Yixuan','1234','Intern');
             e2 = employee('Sean','2233','Intern');
-            e3 = employee('Lily','0000','Manager');
+            e3 = manager('Lily','0000','Manager');
             e4 = employee('Sia','3445','Intern');
             e5 = employee('Tom','9865','Intern');
-            
+            e3.addEmployee(e1);
+            e3.addEmployee(e2);
+            e3.addEmployee(e4);
+            e3.addEmployee(e5);
             obj.employees = {e1;e2;e3;e4;e5};
         end
         
@@ -40,8 +43,7 @@ classdef allEmployee < handle
                 end
                 
             end
-            
-            %???return null
+            em = employee.empty;
              
         end
         
@@ -57,24 +59,22 @@ classdef allEmployee < handle
                 end
                 
             end
-            
-            %???
+       
              
         end
         
         function ems = searchEmployeeByName(obj,name)
-            ems = {};%initialize the size of the array
+            ems = {};
             ss = size(obj.employees);
             rows = ss(1);
             expression = ['.*',name,'.*'] ;
-%             count = 1;
+
             for index = 1:rows
                 startIndex = regexpi(obj.employees{index,1}.name,expression);
                 if isempty(startIndex)==0
                    
                     ems{end+1,1} = obj.employees{index,1};
-%                     count = count +1;
-                     
+                
                 end
                 
             end
