@@ -10,9 +10,9 @@ classdef allEmployee < handle
     
     methods
         function obj = allEmployee()
-            
+            %             clear the counter to be 0
             employee.count.clear();
-            
+            %             initialize some default data
             e1 = employee('Yixuan','1234','Intern');
             e2 = employee('Sean','2233','Intern');
             e3 = manager('Lily','0000','Manager');
@@ -62,7 +62,7 @@ classdef allEmployee < handle
        
              
         end
-        
+%         ?
         function ems = searchEmployeeByName(obj,name)
             ems = {};
             ss = size(obj.employees);

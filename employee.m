@@ -4,12 +4,12 @@ classdef employee < handle
     properties       
        name;
        phone;
-       role;
-      
+       role;     
     end
     properties(SetAccess=private)
        id; 
     end
+%     count the number of the object 
     properties(Constant,Hidden)
        count = thiscount();
     end

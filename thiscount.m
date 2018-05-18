@@ -1,5 +1,5 @@
 classdef (Sealed) thiscount < handle 
-   properties(Access = public)
+   properties
         number = 0
    end
    methods

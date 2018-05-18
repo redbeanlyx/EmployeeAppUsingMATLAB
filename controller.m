@@ -1,6 +1,5 @@
 classdef controller < handle
-    %UNTITLED Summary of this class goes here
-    %   Detailed explanation goes here
+
     
     properties
         viewObj;
@@ -13,7 +12,7 @@ classdef controller < handle
             obj.viewObj = viewObj;
             obj.modelObj = modelObj;
         end
-        
+%         input validation
         function result = isValidate(obj,name,phone)
             if isempty(name)
                 warndlg('name can not be empty!','Warning');
